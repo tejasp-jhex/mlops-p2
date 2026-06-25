@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+scikit-learn
+pandas
+numpy
+xgboost
+joblib
+
+mlflow
+dvc
+evidently
+
+matplotlib
+
+pytest
+
+python-dotenv
