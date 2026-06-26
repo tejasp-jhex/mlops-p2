@@ -1,0 +1,26 @@
+stages:
+
+  preprocess:
+
+    cmd: python -m src.preprocessing
+
+    deps:
+      - src/preprocessing.py
+      - data/raw/customer_churn.csv
+      - params.yaml
+
+    outs:
+      - data/processed/data.pkl
+      - models/preprocessor.pkl
+
+  train:
+
+    cmd: python -m src.train
+
+    deps:
+      - src/train.py
+      - data/processed/data.pkl
+      - params.yaml
+
+    outs:
+      - models/model.pkl

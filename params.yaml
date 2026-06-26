@@ -1,0 +1,14 @@
+random_state: 42
+
+data:
+  test_size: 0.2
+
+model:
+  n_estimators: 100
+  learning_rate: 0.1
+  max_depth: 8
+  eval_metric: logloss
+
+promotion:
+  metric: f1_score
+  threshold: 0.55

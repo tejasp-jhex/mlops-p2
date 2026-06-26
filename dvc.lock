@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python -m src.preprocessing
+    deps:
+    - path: data/raw/customer_churn.csv
+      hash: md5
+      md5: 0f9de68e012bd3aed5fa7cdc9fc421af
+      size: 977501
+    - path: params.yaml
+      hash: md5
+      md5: 0a5e5652b687b147da108049cfc86775
+      size: 136
+    - path: src/preprocessing.py
+      hash: md5
+      md5: 659b600bcd7d1991786fa247fd1bb649
+      size: 3379
+    outs:
+    - path: data/processed/data.pkl
+      hash: md5
+      md5: 01996f2bf2feeb2bcce3d478173094fb
+      size: 2762180
+    - path: models/preprocessor.pkl
+      hash: md5
+      md5: 076d2db77852ed16b9860f4914e37c74
+      size: 7876
+  train:
+    cmd: python -m src.train
+    deps:
+    - path: data/processed/data.pkl
+      hash: md5
+      md5: 01996f2bf2feeb2bcce3d478173094fb
+      size: 2762180
+    - path: params.yaml
+      hash: md5
+      md5: 0a5e5652b687b147da108049cfc86775
+      size: 136
+    - path: src/train.py
+      hash: md5
+      md5: 4331681a9a3d917fc1271e4a21ea172a
+      size: 2135
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: abff435fdb4362c6407d7e399b0f4e34
+      size: 615992
