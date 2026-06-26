@@ -1,5 +1,5 @@
 import joblib
-from src.logger import get_logger
+from serving.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -8,7 +8,7 @@ from config.config import (
     PREPROCESSOR_PATH,
 )
 
-import app.state as state
+import serving.app.state as state
 
 
 def load_models():

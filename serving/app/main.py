@@ -1,17 +1,20 @@
 from fastapi import FastAPI
-from app.predictor import predict
-from app.schemas import (
+from serving.app.predictor import predict
+from serving.app.schemas import (
     CustomerData,
     PredictionResponse,
 )
 from contextlib import asynccontextmanager
-from app.model_loader import load_models
+from serving.app.model_loader import load_models
+from serving.logger import get_logger
+
+logger = get_logger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_models()
     yield
-    print("👋 API shutting down.")
+    logger.info("👋 API shutting down.")
 
 app = FastAPI(
     title="Customer Churn Prediction API",
@@ -21,6 +24,12 @@ app = FastAPI(
 @app.get("/")
 def home():
     return {"message": "API is running"}
+
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
 
 @app.post("/predict", response_model=PredictionResponse)
 def predict_customer(data: CustomerData):

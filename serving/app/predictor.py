@@ -1,6 +1,6 @@
 import pandas as pd
 
-import app.state as state
+import serving.app.state as state
 
 def predict(data):
 

@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: python -m src.preprocessing
+    cmd: python -m training.src.preprocessing
     deps:
     - path: data/raw/customer_churn.csv
       hash: md5
@@ -9,12 +9,12 @@ stages:
       size: 977501
     - path: params.yaml
       hash: md5
-      md5: 0a5e5652b687b147da108049cfc86775
-      size: 136
-    - path: src/preprocessing.py
+      md5: d46644e73771dd7c464efdc3666db832
+      size: 189
+    - path: training/src/preprocessing.py
       hash: md5
-      md5: 659b600bcd7d1991786fa247fd1bb649
-      size: 3379
+      md5: f45eecbc655f26a0620fc93e541f71bf
+      size: 3471
     outs:
     - path: data/processed/data.pkl
       hash: md5
@@ -25,7 +25,7 @@ stages:
       md5: 076d2db77852ed16b9860f4914e37c74
       size: 7876
   train:
-    cmd: python -m src.train
+    cmd: python -m training.src.train
     deps:
     - path: data/processed/data.pkl
       hash: md5
@@ -33,12 +33,12 @@ stages:
       size: 2762180
     - path: params.yaml
       hash: md5
-      md5: 0a5e5652b687b147da108049cfc86775
-      size: 136
-    - path: src/train.py
+      md5: d46644e73771dd7c464efdc3666db832
+      size: 189
+    - path: training/src/train.py
       hash: md5
-      md5: 4331681a9a3d917fc1271e4a21ea172a
-      size: 2135
+      md5: c9e7edd9a22b227296aaa1963b304982
+      size: 2239
     outs:
     - path: models/model.pkl
       hash: md5

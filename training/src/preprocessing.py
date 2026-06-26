@@ -12,8 +12,8 @@ from config.config import (
     PREPROCESSOR_PATH,
     PROCESSED_DATA_PATH
 )
-from src.utils import load_params
-from src.logger import get_logger
+from training.src.utils import load_params
+from training.src.logger import get_logger
 
 logger = get_logger(__name__)
 

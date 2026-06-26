@@ -2,10 +2,10 @@ stages:
 
   preprocess:
 
-    cmd: python -m src.preprocessing
+    cmd: python -m training.src.preprocessing
 
     deps:
-      - src/preprocessing.py
+      - training/src/preprocessing.py
       - data/raw/customer_churn.csv
       - params.yaml
 
@@ -15,10 +15,10 @@ stages:
 
   train:
 
-    cmd: python -m src.train
+    cmd: python -m training.src.train
 
     deps:
-      - src/train.py
+      - training/src/train.py
       - data/processed/data.pkl
       - params.yaml
 

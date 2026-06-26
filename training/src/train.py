@@ -1,10 +1,10 @@
 import joblib
 from pathlib import Path
 from xgboost import XGBClassifier
-from src.evaluate import evaluate_model
-from src.utils import load_params
-from src.model_promotion import should_register_model
-from src.logger import get_logger
+from training.src.evaluate import evaluate_model
+from training.src.utils import load_params
+from training.src.model_promotion import should_register_model
+from training.src.logger import get_logger
 
 from sklearn.metrics import (
     accuracy_score,
@@ -20,7 +20,7 @@ from config.config import (
     RANDOM_STATE,
 )
 
-from src.mlflow_utils import (
+from training.src.mlflow_utils import (
     configure_mlflow,
     start_run,
     log_parameters,
