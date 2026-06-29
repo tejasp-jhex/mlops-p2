@@ -58,3 +58,49 @@ MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
 EXPERIMENT_NAME = "customer-churn"
 
 REGISTERED_MODEL_NAME = "customer-churn-model"
+
+
+# ============================
+# DRIFT DETECTION
+# ============================
+
+REFERENCE_DATA_PATH = "data/raw/customer_churn.csv"
+
+PRODUCTION_DATA_PATH = "monitoring/production_logs/predictions.csv"
+
+DRIFT_REPORT_PATH = "monitoring/reports/drift_report.html"
+
+DRIFT_RESULT_PATH = "monitoring/reports/drift_result.json"
+
+
+# ============================
+# GCS STORAGE
+# ============================
+
+GCS_BUCKET_NAME = "your-bucket-name"
+
+PREDICTIONS_BLOB = "production_logs/predictions.csv"
+
+DRIFT_REPORT_BLOB = "reports/drift_report.html"
+
+DRIFT_RESULT_BLOB = "reports/drift_result.json"
+
+# ------------------------
+# BigQuery Configuration
+# ------------------------
+
+BQ_PROJECT_ID = "women-safety-by-pioneers"
+BQ_DATASET_ID = "customer_churn_mlops"
+BQ_TABLE_ID = "prediction_logs"
+BQ_REFERENCE_TABLE_ID = "reference_data"
+BQ_PREDICTION_TABLE_ID = "prediction_logs"
+
+# ------------------------
+# GCS Configuration
+# ------------------------
+
+GCS_BUCKET_NAME = "tejas-mlops-storage"
+DRIFT_REPORT_BLOB = "reports/drift_report.html"
+DRIFT_RESULT_BLOB = "reports/drift_result.json"
+
+MODEL_VERSION = "v1"

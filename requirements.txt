@@ -17,3 +17,8 @@ pytest
 python-dotenv
 
 PyYAML
+
+evidently
+
+google-cloud-bigquery
+google-cloud-storage

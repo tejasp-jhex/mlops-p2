@@ -24,3 +24,14 @@ stages:
 
     outs:
       - models/model.pkl
+
+  drift_detection:
+
+    cmd: python -m monitoring.drift
+
+    deps:
+      - monitoring/drift.py
+
+    outs:
+      - monitoring/reports/drift_report.html
+      - monitoring/reports/drift_result.json

@@ -736,3 +736,471 @@
 2026-06-26 18:07:06,483 | INFO | __main__ | Metrics: {'accuracy': 0.78708303761533, 'precision': 0.6128048780487805, 'recall': 0.5374331550802139, 'f1_score': 0.5726495726495726}
 2026-06-26 18:07:46,203 | INFO | serving.app.model_loader | Model and preprocessor loaded.
 2026-06-26 18:17:01,505 | INFO | serving.app.model_loader | Model and preprocessor loaded.
+2026-06-29 11:41:44,357 | INFO | __main__ | Starting drift detection.
+2026-06-29 11:41:44,357 | INFO | __main__ | Loading reference and production datasets.
+2026-06-29 11:41:44,398 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 113, in detect_drift
+    reference, production = load_data(
+                            ~~~~~~~~~^
+        REFERENCE_DATA_PATH,
+        ^^^^^^^^^^^^^^^^^^^^
+        PRODUCTION_DATA_PATH,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 22, in load_data
+    production = pd.read_csv(production_path)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2026-06-29 14:30:48,613 | INFO | __main__ | Inserting prediction into BigQuery.
+2026-06-29 14:30:51,681 | INFO | __main__ | Prediction inserted successfully.
+2026-06-29 16:15:20,344 | INFO | __main__ | Starting drift detection.
+2026-06-29 16:15:20,344 | INFO | __main__ | Loading reference and production datasets.
+2026-06-29 16:15:20,378 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 114, in detect_drift
+    reference, production = load_data(
+                            ~~~~~~~~~^
+        REFERENCE_DATA_PATH,
+        ^^^^^^^^^^^^^^^^^^^^
+        PRODUCTION_DATA_PATH,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 23, in load_data
+    production = pd.read_csv(production_path)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2026-06-29 16:16:23,011 | INFO | __main__ | Starting drift detection.
+2026-06-29 16:16:23,011 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 16:16:23,011 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 16:16:30,422 | ERROR | monitoring.storage.bigquery | Failed to fetch reference dataset.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 61, in <module>
+    import db_dtypes  # type: ignore
+    ^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'db_dtypes'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 2195, in to_dataframe
+    return query_result.to_dataframe(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        bqstorage_client=bqstorage_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\table.py", line 2712, in to_dataframe
+    _pandas_helpers.verify_pandas_imports()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 1172, in verify_pandas_imports
+    raise ValueError(_NO_DB_TYPES_ERROR) from db_dtypes_import_exception
+ValueError: Please install the 'db-dtypes' package to use this function.
+2026-06-29 16:16:30,438 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 61, in <module>
+    import db_dtypes  # type: ignore
+    ^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'db_dtypes'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 121, in detect_drift
+    reference, production = load_data()
+                            ~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 22, in load_data
+    reference = fetch_reference_data()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 2195, in to_dataframe
+    return query_result.to_dataframe(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        bqstorage_client=bqstorage_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\table.py", line 2712, in to_dataframe
+    _pandas_helpers.verify_pandas_imports()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 1172, in verify_pandas_imports
+    raise ValueError(_NO_DB_TYPES_ERROR) from db_dtypes_import_exception
+ValueError: Please install the 'db-dtypes' package to use this function.
+2026-06-29 18:04:36,738 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:04:36,739 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:04:36,739 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:04:42,188 | ERROR | monitoring.storage.bigquery | Failed to fetch reference dataset.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 61, in <module>
+    import db_dtypes  # type: ignore
+    ^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'db_dtypes'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 2195, in to_dataframe
+    return query_result.to_dataframe(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        bqstorage_client=bqstorage_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\table.py", line 2712, in to_dataframe
+    _pandas_helpers.verify_pandas_imports()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 1172, in verify_pandas_imports
+    raise ValueError(_NO_DB_TYPES_ERROR) from db_dtypes_import_exception
+ValueError: Please install the 'db-dtypes' package to use this function.
+2026-06-29 18:04:42,233 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 61, in <module>
+    import db_dtypes  # type: ignore
+    ^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'db_dtypes'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 121, in detect_drift
+    reference, production = load_data()
+                            ~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 22, in load_data
+    reference = fetch_reference_data()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 2195, in to_dataframe
+    return query_result.to_dataframe(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        bqstorage_client=bqstorage_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\table.py", line 2712, in to_dataframe
+    _pandas_helpers.verify_pandas_imports()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_pandas_helpers.py", line 1172, in verify_pandas_imports
+    raise ValueError(_NO_DB_TYPES_ERROR) from db_dtypes_import_exception
+ValueError: Please install the 'db-dtypes' package to use this function.
+2026-06-29 18:05:18,419 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:05:18,419 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:05:18,419 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:05:22,895 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:05:22,895 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:05:26,845 | INFO | monitoring.storage.bigquery | Fetched 1 prediction records from BigQuery.
+2026-06-29 18:05:26,845 | INFO | __main__ | Loaded 7043 reference records and 1 production records.
+2026-06-29 18:05:26,845 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:05:26,853 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:05:26,853 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (1, 19)
+2026-06-29 18:05:26,853 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:05:26,980 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 128, in detect_drift
+    report = generate_report(
+        reference,
+        production,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 79, in generate_report
+    report.run(
+    ~~~~~~~~~~^
+        reference_data=reference,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        current_data=production,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 964, in run
+    snapshot.run(current_dataset, reference_dataset, additional_datasets)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 578, in run
+    self._snapshot_item, self._widgets = self._run_items(self.report.items(), self._metrics)
+                                         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 557, in _run_items
+    container_items, container_widgets = self._run_items(item.metrics(self.context), metric_results)
+                                         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 563, in _run_items
+    metric_results[calc.id] = self.context.calculate_metric(calc)
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 208, in calculate_metric
+    current_result, reference_result = calc.call(self)
+                                       ~~~~~~~~~^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\metric_types.py", line 962, in call
+    result = self.calculate(context, *context._input_data)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\metrics\_legacy.py", line 42, in calculate
+    result, render = context.get_legacy_metric(self.legacy_metric(), self._gen_input_data, self.task_name())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 300, in get_legacy_metric
+    result = metric.calculate(input_data)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\metrics\data_drift\dataset_drift_metric.py", line 96, in calculate
+    result = get_drift_for_columns(
+        current_data=data.current_data,
+    ...<5 lines>...
+        agg_data=True,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\data_drift.py", line 500, in get_drift_for_columns
+    drift_by_columns[column_name] = get_one_column_drift(
+                                    ~~~~~~~~~~~~~~~~~~~~^
+        current_data=current_data,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        is_contains_nans=(is_current_contains_nans, is_reference_contains_nans),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\data_drift.py", line 174, in get_one_column_drift
+    drift_result = drift_test_function(reference_column, current_column, column_type, threshold)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\stattests\registry.py", line 52, in __call__
+    p = impl(data, feature_type, actual_threshold)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\stattests\registry.py", line 122, in __call__
+    return self.func(data.reference_data, data.current_data, feature_type, threshold)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\stattests\text_content_drift_abs.py", line 14, in _abs_text_content_drift
+    return calculate_text_drift_score(reference_data, current_data, bootstrap=False, threshold=threshold)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\utils\data_drift_utils.py", line 157, in calculate_text_drift_score
+    domain_classifier_roc_auc, _, _ = roc_auc_domain_classifier(
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        X_train,
+        ^^^^^^^^
+    ...<2 lines>...
+        y_test,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\utils\data_drift_utils.py", line 116, in roc_auc_domain_classifier
+    pipeline.fit(X_train, y_train)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\pipeline.py", line 649, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\linear_model\_stochastic_gradient.py", line 941, in fit
+    return self._fit(
+           ~~~~~~~~~^
+        X,
+        ^^
+    ...<6 lines>...
+        sample_weight=sample_weight,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\linear_model\_stochastic_gradient.py", line 723, in _fit
+    self._partial_fit(
+    ~~~~~~~~~~~~~~~~~^
+        X,
+        ^^
+    ...<8 lines>...
+        intercept_init,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\sklearn\linear_model\_stochastic_gradient.py", line 678, in _partial_fit
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The number of classes has to be greater than one; got 1 class
+2026-06-29 18:18:48,946 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:18:48,946 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:18:48,946 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:18:57,683 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:18:57,683 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:19:04,627 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:19:04,628 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:19:04,628 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:19:04,630 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:19:04,630 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:19:04,630 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:19:04,979 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 128, in detect_drift
+    report = generate_report(
+        reference,
+        production,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 79, in generate_report
+    report.run(
+    ~~~~~~~~~~^
+        reference_data=reference,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        current_data=production,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 964, in run
+    snapshot.run(current_dataset, reference_dataset, additional_datasets)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 578, in run
+    self._snapshot_item, self._widgets = self._run_items(self.report.items(), self._metrics)
+                                         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 557, in _run_items
+    container_items, container_widgets = self._run_items(item.metrics(self.context), metric_results)
+                                         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 563, in _run_items
+    metric_results[calc.id] = self.context.calculate_metric(calc)
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\report.py", line 208, in calculate_metric
+    current_result, reference_result = calc.call(self)
+                                       ~~~~~~~~~^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\core\metric_types.py", line 962, in call
+    result = self.calculate(context, *context._input_data)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\metrics\column_statistics.py", line 575, in calculate
+    drift = get_one_column_drift(
+        current_data=current_data.as_dataframe(),
+    ...<19 lines>...
+        agg_data=True,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\evidently\legacy\calculations\data_drift.py", line 168, in get_one_column_drift
+    raise ValueError(f"Column '{column_name}' in reference dataset should contain numerical values only.")
+ValueError: Column 'TotalCharges' in reference dataset should contain numerical values only.
+2026-06-29 18:32:03,741 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:32:03,741 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:32:03,741 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:32:09,357 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:32:09,357 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:32:13,814 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:32:13,814 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:32:13,814 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:32:13,816 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:32:13,816 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:32:13,817 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:32:14,742 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 18:32:14,743 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 18:32:14,743 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 133, in detect_drift
+    save_html_report(report)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 92, in save_html_report
+    report.save_html(DRIFT_REPORT_PATH)
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'Report' object has no attribute 'save_html'
+2026-06-29 18:35:45,862 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:35:45,862 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:35:45,863 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:35:50,897 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:35:50,897 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:35:55,547 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:35:55,547 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:35:55,547 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:35:55,550 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:35:55,550 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:35:55,550 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:35:56,478 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 18:35:56,479 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 18:35:56,479 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 133, in detect_drift
+    save_html_report(report)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 92, in save_html_report
+    report.save(path=DRIFT_REPORT_PATH)
+    ^^^^^^^^^^^
+AttributeError: 'Report' object has no attribute 'save'
+2026-06-29 18:41:29,366 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:41:29,366 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:41:29,366 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:41:34,487 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:41:34,487 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:41:38,859 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:41:38,859 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:41:38,859 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:41:38,861 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:41:38,861 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:41:38,862 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:41:39,777 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 18:41:39,777 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 18:41:40,584 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 18:41:40,584 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 134, in detect_drift
+    save_json_summary(report)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 97, in save_json_summary
+    result = report.as_dict()
+             ^^^^^^^^^^^^^^
+AttributeError: 'Snapshot' object has no attribute 'as_dict'. Did you mean: 'load_dict'?
+2026-06-29 18:42:58,373 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:42:58,374 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:42:58,374 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:43:03,623 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:43:03,623 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:43:08,635 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:43:08,636 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:43:08,636 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:43:08,638 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:43:08,638 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:43:08,639 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:43:09,558 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 18:43:09,558 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 18:43:09,629 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 18:43:09,630 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 134, in detect_drift
+    save_json_summary(report)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 97, in save_json_summary
+    result = report.load_dict()
+TypeError: Snapshot.load_dict() missing 1 required positional argument: 'data'
+2026-06-29 18:45:44,196 | INFO | __main__ | Starting drift detection.
+2026-06-29 18:45:44,196 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 18:45:44,196 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 18:45:49,021 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 18:45:49,022 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 18:45:54,098 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 18:45:54,098 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 18:45:54,098 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 18:45:54,100 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 18:45:54,101 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 18:45:54,101 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 18:45:55,016 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 18:45:55,016 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 18:45:55,088 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 18:45:55,089 | WARNING | __main__ | Could not extract drift summary from known key paths. Raw result saved.
+2026-06-29 18:45:55,090 | INFO | __main__ | Drift Summary -> Dataset Drift: None, Drifted Columns: None, Share: 0.00
+2026-06-29 18:45:55,090 | INFO | __main__ | Drift detection completed successfully.
