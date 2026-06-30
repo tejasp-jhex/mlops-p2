@@ -1204,3 +1204,75 @@ TypeError: Snapshot.load_dict() missing 1 required positional argument: 'data'
 2026-06-29 18:45:55,089 | WARNING | __main__ | Could not extract drift summary from known key paths. Raw result saved.
 2026-06-29 18:45:55,090 | INFO | __main__ | Drift Summary -> Dataset Drift: None, Drifted Columns: None, Share: 0.00
 2026-06-29 18:45:55,090 | INFO | __main__ | Drift detection completed successfully.
+2026-06-29 19:18:21,984 | INFO | __main__ | Starting drift detection.
+2026-06-29 19:18:21,984 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 19:18:21,985 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 19:18:27,558 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 19:18:27,558 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 19:18:34,078 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 19:18:34,078 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 19:18:34,078 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 19:18:34,080 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 19:18:34,081 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 19:18:34,081 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 19:18:35,032 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 19:18:35,032 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 19:18:35,107 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 19:18:35,108 | WARNING | __main__ | Could not extract drift summary from known key paths. Raw result saved.
+2026-06-29 19:18:35,109 | INFO | __main__ | Drift Summary -> Dataset Drift: None, Drifted Columns: None, Share: 0.00
+2026-06-29 19:18:35,109 | INFO | __main__ | Drift detection completed successfully.
+2026-06-29 19:23:40,436 | INFO | __main__ | Starting drift detection.
+2026-06-29 19:23:40,436 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 19:23:40,436 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 19:23:45,350 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 19:23:45,350 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 19:23:49,831 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 19:23:49,831 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 19:23:49,831 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 19:23:49,834 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 19:23:49,834 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 19:23:49,834 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 19:23:50,808 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 19:23:50,809 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 19:23:50,892 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 19:23:50,893 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 173, in detect_drift
+    save_json_summary(report)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 107, in save_json_summary
+    json.dump(summary, file, indent=4)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Python313\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Python313\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Python313\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Python313\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+  File "C:\Python313\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type bool is not JSON serializable
+2026-06-29 19:26:17,438 | INFO | __main__ | Starting drift detection.
+2026-06-29 19:26:17,438 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-06-29 19:26:17,439 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-06-29 19:26:22,319 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-06-29 19:26:22,319 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-06-29 19:26:26,672 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-06-29 19:26:26,672 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-06-29 19:26:26,672 | INFO | __main__ | Preparing datasets for drift detection.
+2026-06-29 19:26:26,675 | INFO | __main__ | Prepared datasets with 19 features.
+2026-06-29 19:26:26,675 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-06-29 19:26:26,675 | INFO | __main__ | Running Evidently data drift analysis.
+2026-06-29 19:26:27,626 | INFO | __main__ | Data drift analysis completed.
+2026-06-29 19:26:27,626 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-06-29 19:26:27,701 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-06-29 19:26:27,702 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 15, Share: 0.88
+2026-06-29 19:26:27,702 | INFO | __main__ | Drift detection completed successfully.

@@ -91,17 +91,45 @@ def save_html_report(report):
 
     report.save_html(DRIFT_REPORT_PATH)
 
+def _extract_drift_summary(result: dict) -> dict:
+    metrics = result.get("metrics", [])
+
+    # --- Dataset-level drift (metrics[0]) ---
+    drift_entry = metrics[0]
+    count = drift_entry["value"]["count"]
+    share = drift_entry["value"]["share"]
+
+    drift_share_threshold = drift_entry["config"].get("drift_share", 0.5)
+    dataset_drift = bool(share > drift_share_threshold)  # ✅ explicit cast
+
+    # --- Per-column drift scores (metrics[1..N]) ---
+    column_drifts = {}
+    for m in metrics[1:]:
+        col = m["config"].get("column")
+        score = float(m["value"])                          # ✅ explicit cast
+        threshold = float(m["config"].get("threshold", 0.1))
+        column_drifts[col] = {
+            "drift_score": score,
+            "drifted": bool(score > threshold),            # ✅ explicit cast
+            "method": m["config"].get("method"),
+        }
+
+    return {
+        "dataset_drift": bool(dataset_drift),
+        "drifted_columns": int(count),
+        "share_drifted_columns": float(share),             # ✅ explicit cast
+        "column_drifts": column_drifts,
+    }
+
+
 def save_json_summary(eval_result) -> None:
-    """Save a JSON summary of drift results. Compatible with Evidently v0.7+."""
     logger.info(f"Saving JSON summary to {DRIFT_RESULT_PATH}")
 
-    result = eval_result.dict()  # ✅ was: report.as_dict()
-
-    # v0.7 Snapshot dict structure is different — extract defensively
+    result = eval_result.dict()
     summary = _extract_drift_summary(result)
 
     with open(DRIFT_RESULT_PATH, "w") as file:
-        json.dump(summary, file, indent=4)
+        json.dump(summary, file, indent=4, default=_json_serializer)  # ✅ safety net
 
     logger.info(
         f"Drift Summary -> "
@@ -111,37 +139,13 @@ def save_json_summary(eval_result) -> None:
     )
 
 
-def _extract_drift_summary(result: dict) -> dict:
-    """
-    Extract drift metrics from Evidently's dict output.
-    Handles both v0.6 (metrics[0]["result"]) and v0.7 (metrics[*]["metric_id"])
-    structures defensively.
-    """
-    # Walk all metric entries and find the DatasetDriftMetric result
-    for metric_entry in result.get("metrics", []):
-        metric_result = metric_entry.get("result", {})
-
-        # v0.6 key names
-        if "dataset_drift" in metric_result:
-            return {
-                "dataset_drift": metric_result["dataset_drift"],
-                "drifted_columns": metric_result.get("number_of_drifted_columns", 0),
-                "share_drifted_columns": metric_result.get("share_of_drifted_columns", 0.0),
-            }
-
-        # v0.7 key names (snake_case, slightly different names)
-        if "share_drifted" in metric_result or "num_drifted" in metric_result:
-            share = metric_result.get("share_drifted", 0.0)
-            num = metric_result.get("num_drifted", 0)
-            return {
-                "dataset_drift": share > 0.5,   # Evidently's default threshold
-                "drifted_columns": num,
-                "share_drifted_columns": share,
-            }
-
-    # Last resort: dump the raw result so you can inspect it and update the paths
-    logger.warning("Could not extract drift summary from known key paths. Raw result saved.")
-    return {"dataset_drift": None, "drifted_columns": None, "share_drifted_columns": 0.0, "_raw": result}
+def _json_serializer(obj):
+    """Fallback serializer for types json.dump can't handle natively."""
+    if isinstance(obj, bool):
+        return bool(obj)
+    if isinstance(obj, (int, float)):  # catches numpy scalar types too
+        return float(obj)
+    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
 
 def detect_drift():
     try:
