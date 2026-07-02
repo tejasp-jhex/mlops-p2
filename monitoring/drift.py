@@ -13,6 +13,11 @@ from monitoring.storage.bigquery import (
     fetch_predictions,
 )
 
+from monitoring.storage.gcs import (
+    upload_json,
+    upload_report,
+)
+
 logger = get_logger(__name__)
 
 
@@ -164,8 +169,10 @@ def detect_drift():
         )
 
         save_html_report(report)
-
         save_json_summary(report)
+
+        upload_report(DRIFT_REPORT_PATH)
+        upload_json(DRIFT_RESULT_PATH)
 
         logger.info("Drift detection completed successfully.")
 

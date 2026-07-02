@@ -1,8 +1,12 @@
--r base.txt
-
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+PyYAML
+python-dotenv
 fastapi
 uvicorn
-
 google-cloud-bigquery
 google-cloud-storage
 google-cloud-bigquery-storage

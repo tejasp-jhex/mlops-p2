@@ -1,0 +1,14 @@
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+PyYAML
+python-dotenv
+
+mlflow
+dvc
+evidently
+matplotlib
+pytest
+evidently

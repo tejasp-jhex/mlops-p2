@@ -9,8 +9,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install Python dependencies
-COPY requirements/base.txt .
-COPY requirements/serving.txt .
+COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r serving.txt
 

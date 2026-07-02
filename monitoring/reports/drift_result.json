@@ -84,7 +84,7 @@
             "method": "Jensen-Shannon distance"
         },
         "PaymentMethod": {
-            "drift_score": 0.179887989524697,
+            "drift_score": 0.17988798952469706,
             "drifted": true,
             "method": "Jensen-Shannon distance"
         }

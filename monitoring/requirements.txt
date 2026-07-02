@@ -1,0 +1,8 @@
+pandas
+evidently
+pathlib
+google-cloud-bigquery
+google-cloud-storage
+google-cloud-bigquery-storage
+pyarrow
+db-dtypes
