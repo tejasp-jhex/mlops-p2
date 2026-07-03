@@ -1775,3 +1775,237 @@ google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcl
 2026-07-02 18:58:53,324 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
 2026-07-02 18:58:57,222 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/02/drift_result.json.
 2026-07-02 18:58:57,222 | INFO | __main__ | Drift detection completed successfully.
+2026-07-03 16:12:08,189 | INFO | __main__ | Starting drift detection.
+2026-07-03 16:12:08,190 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-03 16:12:08,190 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-03 16:12:11,873 | ERROR | monitoring.storage.bigquery | Failed to fetch reference dataset.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+                ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 3590, in query
+    return _job_helpers.query_jobs_insert(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<8 lines>...
+        job_retry,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 205, in query_jobs_insert
+    future = do_query()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 151, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1489, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\base.py", line 825, in _begin
+    api_response = client._call_api(
+        retry,
+    ...<6 lines>...
+        timeout=timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 861, in _call_api
+    return call()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 482, in api_request
+    response = self._make_request(
+        method=method,
+    ...<6 lines>...
+        extra_api_info=extra_api_info,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 341, in _make_request
+    return self._do_request(
+           ~~~~~~~~~~~~~~~~^
+        method, url, headers, data, target_object, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 379, in _do_request
+    return self.http.request(
+           ~~~~~~~~~~~~~~~~~^
+        url=url, method=method, headers=headers, data=data, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\transport\requests.py", line 538, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 240, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 517, in refresh
+    self._perform_refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-07-03 16:12:12,027 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 159, in detect_drift
+    reference, production = load_data()
+                            ~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 27, in load_data
+    reference = fetch_reference_data()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\storage\bigquery.py", line 125, in fetch_reference_data
+    dataframe = client.query(query).to_dataframe()
+                ~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 3590, in query
+    return _job_helpers.query_jobs_insert(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<8 lines>...
+        job_retry,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 205, in query_jobs_insert
+    future = do_query()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 151, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1489, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\base.py", line 825, in _begin
+    api_response = client._call_api(
+        retry,
+    ...<6 lines>...
+        timeout=timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 861, in _call_api
+    return call()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 482, in api_request
+    response = self._make_request(
+        method=method,
+    ...<6 lines>...
+        extra_api_info=extra_api_info,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 341, in _make_request
+    return self._do_request(
+           ~~~~~~~~~~~~~~~~^
+        method, url, headers, data, target_object, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 379, in _do_request
+    return self.http.request(
+           ~~~~~~~~~~~~~~~~~^
+        url=url, method=method, headers=headers, data=data, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\transport\requests.py", line 538, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 240, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 517, in refresh
+    self._perform_refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-07-03 16:17:21,773 | INFO | __main__ | Model registered successfully.
+2026-07-03 16:17:22,101 | INFO | __main__ | Training completed successfully.
+2026-07-03 16:17:22,101 | INFO | __main__ | Metrics: {'accuracy': 0.78708303761533, 'precision': 0.6128048780487805, 'recall': 0.5374331550802139, 'f1_score': 0.5726495726495726}
+2026-07-03 17:14:50,500 | INFO | __main__ | Model registered successfully.
+2026-07-03 17:14:50,864 | INFO | __main__ | Training completed successfully.
+2026-07-03 17:14:50,865 | INFO | __main__ | Metrics: {'accuracy': 0.78708303761533, 'precision': 0.6128048780487805, 'recall': 0.5374331550802139, 'f1_score': 0.5726495726495726}

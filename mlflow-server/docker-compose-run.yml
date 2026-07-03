@@ -1,0 +1,15 @@
+services:
+
+  mlflow:
+
+    image: asia-south1-docker.pkg.dev/women-safety-by-pioneers/customer-churn/mlflow-server:1.0
+
+    container_name: mlflow
+
+    restart: unless-stopped
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - .env

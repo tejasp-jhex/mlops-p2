@@ -53,7 +53,7 @@ TEST_SIZE = 0.2
 # ML FLOW
 # ============================
 
-MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
+MLFLOW_TRACKING_URI = "http://localhost:5000"
 
 EXPERIMENT_NAME = "customer-churn"
 
