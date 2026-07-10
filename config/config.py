@@ -29,13 +29,6 @@ MODEL_PATH = MODEL_DIR / "model.pkl"
 
 
 # ============================
-# MLflow
-# ============================
-
-EXPERIMENT_NAME = "customer-churn"
-
-
-# ============================
 # Random Seed
 # ============================
 
@@ -58,6 +51,8 @@ MLFLOW_TRACKING_URI = "http://localhost:5000"
 EXPERIMENT_NAME = "customer-churn"
 
 REGISTERED_MODEL_NAME = "customer-churn-model"
+
+EXPERIMENT_NAME = "customer-churn"
 
 
 # ============================
@@ -94,6 +89,7 @@ BQ_DATASET_ID = "customer_churn_mlops"
 BQ_TABLE_ID = "prediction_logs"
 BQ_REFERENCE_TABLE_ID = "reference_data"
 BQ_PREDICTION_TABLE_ID = "prediction_logs"
+BQ_RETRAINING_TABLE_ID = "retraining_data"
 
 # ------------------------
 # GCS Configuration

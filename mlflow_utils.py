@@ -52,3 +52,21 @@ def flatten_params(params):
 
 def end_run():
     mlflow.end_run()
+
+
+def log_candidate(candidate):
+    mlflow.xgboost.log_model(
+        candidate.model,
+        artifact_path="model",
+    )
+
+def get_run_id():
+
+    run = mlflow.active_run()
+
+    if run is None:
+        raise RuntimeError(
+            "No active MLflow run."
+        )
+
+    return run.info.run_id

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic import BaseModel
 
 
 class CustomerData(BaseModel):
@@ -21,8 +22,6 @@ class CustomerData(BaseModel):
     PaymentMethod: str
     MonthlyCharges: float
     TotalCharges: float
-
-from pydantic import BaseModel
 
 
 class PredictionResponse(BaseModel):

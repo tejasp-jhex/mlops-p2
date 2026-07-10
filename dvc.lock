@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/raw/customer_churn.csv
       hash: md5
-      md5: 0f9de68e012bd3aed5fa7cdc9fc421af
-      size: 977501
+      md5: 66c606ccc76063944750ff0a71178ee9
+      size: 977503
     - path: params.yaml
       hash: md5
       md5: d46644e73771dd7c464efdc3666db832
@@ -18,18 +18,18 @@ stages:
     outs:
     - path: data/processed/data.pkl
       hash: md5
-      md5: 01996f2bf2feeb2bcce3d478173094fb
+      md5: e804c91467c491624d53427365596386
       size: 2762180
     - path: models/preprocessor.pkl
       hash: md5
-      md5: 076d2db77852ed16b9860f4914e37c74
+      md5: aa37b885e124522dba164be7377f9ab5
       size: 7876
   train:
     cmd: python -m training.src.train
     deps:
     - path: data/processed/data.pkl
       hash: md5
-      md5: 01996f2bf2feeb2bcce3d478173094fb
+      md5: e804c91467c491624d53427365596386
       size: 2762180
     - path: params.yaml
       hash: md5
@@ -42,5 +42,21 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: abff435fdb4362c6407d7e399b0f4e34
-      size: 615992
+      md5: bf5c38591dd6e216f50b2353e5694265
+      size: 583822
+  drift_detection:
+    cmd: python -m monitoring.drift
+    deps:
+    - path: monitoring/drift.py
+      hash: md5
+      md5: 208c6d7375c12319eebc85c667328c6f
+      size: 4939
+    outs:
+    - path: monitoring/reports/drift_report.html
+      hash: md5
+      md5: bdcafb81f62a1083b3f07c7f4675eb30
+      size: 4045152
+    - path: monitoring/reports/drift_result.json
+      hash: md5
+      md5: f0e63d0d4be9d33c09849fb4748ce182
+      size: 2983
