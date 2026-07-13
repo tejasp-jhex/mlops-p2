@@ -1,5 +1,6 @@
 import joblib
 from pathlib import Path
+from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from training.src.evaluate import evaluate_model
 from utils import load_params
@@ -12,7 +13,7 @@ from config.config import (
     MODEL_DIR,
 )
 
-from mlflow_utils import (
+from training.src.mlflow_utils import (
     configure_mlflow,
     start_run,
     log_parameters,
@@ -29,14 +30,20 @@ def load_processed_data():
     return joblib.load(PROCESSED_DATA_PATH)
 
 def train_model(X_train, y_train, params):
-    model = XGBClassifier(
-    random_state=params["random_state"],
-    n_estimators=params["model"]["n_estimators"],
-    learning_rate=params["model"]["learning_rate"],
-    max_depth=params["model"]["max_depth"],
-    eval_metric=params["model"]["eval_metric"],
-    )
+    # model = XGBClassifier(
+    # random_state=params["random_state"],
+    # n_estimators=params["model"]["n_estimators"],
+    # learning_rate=params["model"]["learning_rate"],
+    # max_depth=params["model"]["max_depth"],
+    # eval_metric=params["model"]["eval_metric"],
+    # )
 
+    model = RandomForestClassifier(
+        random_state=params["random_state"],
+        n_estimators=params["model"]["n_estimators"],
+        max_depth=params["model"]["max_depth"],
+    )
+     
     model.fit(X_train, y_train)
 
     return model

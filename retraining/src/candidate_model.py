@@ -24,3 +24,7 @@ class CandidateModel:
     training_rows: int
 
     run_id: str | None = None
+
+    promoted: bool = False
+
+    model_version: str | None = None

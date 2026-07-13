@@ -46,7 +46,7 @@ TEST_SIZE = 0.2
 # ML FLOW
 # ============================
 
-MLFLOW_TRACKING_URI = "http://localhost:5000"
+MLFLOW_TRACKING_URI = "http://8.231.118.81:5000"
 
 EXPERIMENT_NAME = "customer-churn"
 
@@ -90,6 +90,7 @@ BQ_TABLE_ID = "prediction_logs"
 BQ_REFERENCE_TABLE_ID = "reference_data"
 BQ_PREDICTION_TABLE_ID = "prediction_logs"
 BQ_RETRAINING_TABLE_ID = "retraining_data"
+BQ_RETRAINING_HISTORY_TABLE = "retraining_history"
 
 # ------------------------
 # GCS Configuration
@@ -100,3 +101,10 @@ DRIFT_REPORT_BLOB = "reports/drift_report.html"
 DRIFT_RESULT_BLOB = "reports/drift_result.json"
 
 MODEL_VERSION = "v1"
+
+
+# Cloud Run
+PROJECT_ID = "women-safety-by-pioneers"
+REGION = "asia-south1"
+RETRAINING_JOB_NAME = "retraining-job"
+RETRAINING_COOLDOWN_HOURS = 24

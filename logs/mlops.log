@@ -2676,3 +2676,60 @@ google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcl
 2026-07-10 18:51:19,427 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7927608232789212, 'precision': 0.6257668711656442, 'recall': 0.5454545454545454, 'f1_score': 0.5828571428571429}
 2026-07-10 18:51:30,466 | INFO | retraining.src.registry | Production model found (version=5).
 2026-07-10 18:51:30,466 | INFO | retraining.src.registry | Candidate F1: 0.5829 | Production F1: 0.5829
+2026-07-13 13:32:08,475 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-13 13:32:52,083 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-13 13:32:53,583 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-13 13:44:45,229 | INFO | __main__ | Starting retraining pipeline.
+2026-07-13 13:44:45,230 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-13 13:44:51,281 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-13 13:44:51,281 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-13 13:44:51,281 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-13 13:44:51,298 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-13 13:44:51,329 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-13 13:44:51,331 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-13 13:44:51,331 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-13 13:44:51,331 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-13 13:44:51,384 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-13 13:44:51,384 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-13 13:44:51,384 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-13 13:44:51,385 | INFO | retraining.src.train | Starting model training.
+2026-07-13 13:44:51,595 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-13 13:44:51,595 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-13 13:44:51,617 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-13 13:44:51,618 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7927608232789212, 'precision': 0.6257668711656442, 'recall': 0.5454545454545454, 'f1_score': 0.5828571428571429}
+2026-07-13 13:45:05,956 | INFO | retraining.src.registry | Production model found (version=5).
+2026-07-13 13:45:05,956 | INFO | retraining.src.registry | Candidate F1: 0.5829 | Production F1: 0.5829
+2026-07-13 13:45:05,956 | INFO | __main__ | Candidate was not promoted.
+2026-07-13 13:45:06,005 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-13 13:45:07,221 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-13 13:45:07,221 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-13 16:38:54,540 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:38:54,584 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:38:54,584 | INFO | __main__ | Metrics: {'accuracy': 0.7885024840312278, 'precision': 0.6194968553459119, 'recall': 0.5267379679144385, 'f1_score': 0.569364161849711}
+2026-07-13 16:40:02,970 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:40:03,029 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:40:03,029 | INFO | __main__ | Metrics: {'accuracy': 0.7792760823278921, 'precision': 0.5969230769230769, 'recall': 0.5187165775401069, 'f1_score': 0.5550786838340487}
+2026-07-13 16:40:53,076 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:40:53,118 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:40:53,118 | INFO | __main__ | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6068111455108359, 'recall': 0.5240641711229946, 'f1_score': 0.5624103299856528}
+2026-07-13 16:41:47,221 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:41:47,261 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:41:47,261 | INFO | __main__ | Metrics: {'accuracy': 0.7849538679914834, 'precision': 0.6156351791530945, 'recall': 0.5053475935828877, 'f1_score': 0.5550660792951542}
+2026-07-13 16:48:54,644 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:48:54,714 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:48:54,724 | INFO | __main__ | Metrics: {'accuracy': 0.7998580553584103, 'precision': 0.6631205673758865, 'recall': 0.5, 'f1_score': 0.5701219512195121}
+2026-07-13 16:49:55,139 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:49:55,181 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:49:55,181 | INFO | __main__ | Metrics: {'accuracy': 0.8005677785663591, 'precision': 0.6666666666666666, 'recall': 0.49732620320855614, 'f1_score': 0.5696784073506891}
+2026-07-13 16:50:33,029 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:50:33,067 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:50:33,068 | INFO | __main__ | Metrics: {'accuracy': 0.8005677785663591, 'precision': 0.6654804270462633, 'recall': 0.5, 'f1_score': 0.5709923664122137}
+2026-07-13 16:51:12,424 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:51:12,467 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:51:12,467 | INFO | __main__ | Metrics: {'accuracy': 0.8005677785663591, 'precision': 0.6654804270462633, 'recall': 0.5, 'f1_score': 0.5709923664122137}
+2026-07-13 16:52:42,939 | INFO | __main__ | Model registered successfully.
+2026-07-13 16:52:42,978 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:52:42,978 | INFO | __main__ | Metrics: {'accuracy': 0.7963094393186657, 'precision': 0.6505190311418685, 'recall': 0.5026737967914439, 'f1_score': 0.5671191553544495}
+2026-07-13 16:53:20,172 | INFO | __main__ | Model did not meet the promotion criteria.
+2026-07-13 16:53:20,210 | INFO | __main__ | Training completed successfully.
+2026-07-13 16:53:20,210 | INFO | __main__ | Metrics: {'accuracy': 0.7856635911994322, 'precision': 0.6782178217821783, 'recall': 0.3663101604278075, 'f1_score': 0.4756944444444444}

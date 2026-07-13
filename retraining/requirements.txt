@@ -1,0 +1,16 @@
+google-cloud-bigquery
+
+mlflow
+xgboost
+scikit-learn
+pandas
+numpy
+joblib
+pyyaml
+
+google-auth
+google-auth-oauthlib
+google-api-core
+
+db-dtypes
+pyarrow

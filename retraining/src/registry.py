@@ -92,3 +92,5 @@ def register_candidate(
     logger.info(
         f"Candidate promoted to Production (version={registered_model.version})."
     )
+
+    return registered_model.version

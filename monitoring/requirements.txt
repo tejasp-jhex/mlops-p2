@@ -6,3 +6,4 @@ google-cloud-storage
 google-cloud-bigquery-storage
 pyarrow
 db-dtypes
+google-cloud-run
