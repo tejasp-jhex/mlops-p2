@@ -52,8 +52,6 @@ EXPERIMENT_NAME = "customer-churn"
 
 REGISTERED_MODEL_NAME = "customer-churn-model"
 
-EXPERIMENT_NAME = "customer-churn"
-
 
 # ============================
 # DRIFT DETECTION
@@ -72,7 +70,7 @@ DRIFT_RESULT_PATH = "monitoring/reports/drift_result.json"
 # GCS STORAGE
 # ============================
 
-GCS_BUCKET_NAME = "your-bucket-name"
+GCS_BUCKET_NAME = "tejas-mlops-storage"
 
 PREDICTIONS_BLOB = "production_logs/predictions.csv"
 
@@ -107,4 +105,7 @@ MODEL_VERSION = "v1"
 PROJECT_ID = "women-safety-by-pioneers"
 REGION = "asia-south1"
 RETRAINING_JOB_NAME = "retraining-job"
+RETRAINING_COOLDOWN_HOURS = 24
+
+# Retraining Cooldown
 RETRAINING_COOLDOWN_HOURS = 24

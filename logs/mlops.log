@@ -2733,3 +2733,697 @@ google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcl
 2026-07-13 16:53:20,172 | INFO | __main__ | Model did not meet the promotion criteria.
 2026-07-13 16:53:20,210 | INFO | __main__ | Training completed successfully.
 2026-07-13 16:53:20,210 | INFO | __main__ | Metrics: {'accuracy': 0.7856635911994322, 'precision': 0.6782178217821783, 'recall': 0.3663101604278075, 'f1_score': 0.4756944444444444}
+2026-07-14 14:46:49,624 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 14:46:49,625 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 14:46:51,798 | ERROR | retraining.src.data_loader | Failed to load retraining dataset.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\retraining\src\data_loader.py", line 58, in load_retraining_data
+    dataframe = client.query(
+                ~~~~~~~~~~~~^
+        query
+        ^^^^^
+    ).to_dataframe()
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 3590, in query
+    return _job_helpers.query_jobs_insert(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<8 lines>...
+        job_retry,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 205, in query_jobs_insert
+    future = do_query()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 151, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1489, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\base.py", line 825, in _begin
+    api_response = client._call_api(
+        retry,
+    ...<6 lines>...
+        timeout=timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 861, in _call_api
+    return call()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 482, in api_request
+    response = self._make_request(
+        method=method,
+    ...<6 lines>...
+        extra_api_info=extra_api_info,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 341, in _make_request
+    return self._do_request(
+           ~~~~~~~~~~~~~~~~^
+        method, url, headers, data, target_object, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 379, in _do_request
+    return self.http.request(
+           ~~~~~~~~~~~~~~~~~^
+        url=url, method=method, headers=headers, data=data, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\transport\requests.py", line 538, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 240, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 517, in refresh
+    self._perform_refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-07-14 14:46:51,870 | ERROR | __main__ | Retraining pipeline failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\retraining\src\retrain.py", line 40, in main
+    df = load_retraining_data()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\retraining\src\data_loader.py", line 58, in load_retraining_data
+    dataframe = client.query(
+                ~~~~~~~~~~~~^
+        query
+        ^^^^^
+    ).to_dataframe()
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 3590, in query
+    return _job_helpers.query_jobs_insert(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<8 lines>...
+        job_retry,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 205, in query_jobs_insert
+    future = do_query()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\_job_helpers.py", line 151, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1489, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\job\base.py", line 825, in _begin
+    api_response = client._call_api(
+        retry,
+    ...<6 lines>...
+        timeout=timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\bigquery\client.py", line 861, in _call_api
+    return call()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 482, in api_request
+    response = self._make_request(
+        method=method,
+    ...<6 lines>...
+        extra_api_info=extra_api_info,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 341, in _make_request
+    return self._do_request(
+           ~~~~~~~~~~~~~~~~^
+        method, url, headers, data, target_object, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\_http\__init__.py", line 379, in _do_request
+    return self.http.request(
+           ~~~~~~~~~~~~~~~~~^
+        url=url, method=method, headers=headers, data=data, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\transport\requests.py", line 538, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 240, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\auth\credentials.py", line 517, in refresh
+    self._perform_refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\oauth2\reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+        "Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate."
+    )
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-07-14 14:47:22,211 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 14:47:22,211 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 14:47:28,607 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 14:47:28,607 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 14:47:28,607 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 14:47:28,630 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 14:47:28,684 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 14:47:28,686 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 14:47:28,686 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 14:47:28,687 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 14:47:28,762 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 14:47:28,762 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 14:47:28,763 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 14:47:28,763 | INFO | retraining.src.train | Starting model training.
+2026-07-14 14:47:29,820 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 14:47:29,820 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 14:47:29,851 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 14:47:29,851 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 14:47:50,814 | INFO | retraining.src.registry | Production model found (version=5).
+2026-07-14 14:47:50,814 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5829
+2026-07-14 14:47:50,815 | INFO | __main__ | Candidate was not promoted.
+2026-07-14 14:47:50,994 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 14:47:52,449 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 14:47:52,449 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 15:10:26,496 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 15:10:26,496 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 15:10:33,263 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 15:10:33,263 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 15:10:33,263 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 15:10:33,268 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 15:10:33,295 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 15:10:33,296 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 15:10:33,296 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 15:10:33,296 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 15:10:33,339 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 15:10:33,340 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 15:10:33,340 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 15:10:33,340 | INFO | retraining.src.train | Starting model training.
+2026-07-14 15:10:34,768 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 15:10:34,768 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 15:10:34,815 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 15:10:34,815 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 15:10:50,943 | INFO | retraining.src.registry | Production model found (version=5).
+2026-07-14 15:10:50,944 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5829
+2026-07-14 15:10:50,944 | INFO | __main__ | Candidate was not promoted.
+2026-07-14 15:10:51,118 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 15:10:52,293 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 15:10:52,294 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 15:43:04,475 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 15:43:04,476 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 15:43:11,158 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 15:43:11,159 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 15:43:11,159 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 15:43:11,162 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 15:43:11,188 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 15:43:11,189 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 15:43:11,189 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 15:43:11,189 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 15:43:11,229 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 15:43:11,229 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 15:43:11,229 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 15:43:11,230 | INFO | retraining.src.train | Starting model training.
+2026-07-14 15:43:11,877 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 15:43:11,878 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 15:43:11,903 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 15:43:11,904 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 15:43:25,515 | INFO | retraining.src.registry | Production model found (version=5).
+2026-07-14 15:43:25,516 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5829
+2026-07-14 15:43:25,516 | INFO | __main__ | Candidate was not promoted.
+2026-07-14 15:43:25,700 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 15:43:27,145 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 15:43:27,145 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 16:29:03,223 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 16:29:03,223 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 16:29:08,707 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 16:29:08,707 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 16:29:08,707 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 16:29:08,711 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 16:29:08,738 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 16:29:08,739 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 16:29:08,739 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 16:29:08,739 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 16:29:08,784 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 16:29:08,784 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 16:29:08,784 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 16:29:08,785 | INFO | retraining.src.train | Starting model training.
+2026-07-14 16:29:09,479 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 16:29:09,479 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 16:29:09,507 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 16:29:09,507 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 16:29:23,538 | INFO | retraining.src.registry | No production model found.
+2026-07-14 16:29:23,538 | INFO | retraining.src.registry | No production model exists. Candidate will be promoted.
+2026-07-14 16:29:23,538 | INFO | retraining.src.registry | Registering candidate model.
+2026-07-14 16:29:28,384 | INFO | retraining.src.registry | Candidate promoted to Production (version=7).
+2026-07-14 16:29:28,384 | INFO | __main__ | Candidate promoted to Production (Version 7).
+2026-07-14 16:29:28,548 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 16:29:29,648 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 16:29:29,648 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 16:44:46,094 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 16:44:46,095 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 16:44:52,024 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 16:44:52,024 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 16:44:52,024 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 16:44:52,028 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 16:44:52,055 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 16:44:52,056 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 16:44:52,057 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 16:44:52,057 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 16:44:52,106 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 16:44:52,106 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 16:44:52,106 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 16:44:52,106 | INFO | retraining.src.train | Starting model training.
+2026-07-14 16:44:52,902 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 16:44:52,903 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 16:44:52,932 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 16:44:52,932 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 16:45:06,883 | INFO | retraining.src.registry | Production model found (version=7).
+2026-07-14 16:45:06,883 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5551
+2026-07-14 16:45:06,883 | INFO | retraining.src.registry | Registering candidate model.
+2026-07-14 16:45:12,112 | INFO | retraining.src.registry | Candidate promoted to Production (version=9).
+2026-07-14 16:45:12,112 | INFO | __main__ | Candidate promoted to Production (Version 9).
+2026-07-14 16:45:12,293 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 16:45:13,396 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 16:45:13,396 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 17:02:26,566 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 17:02:26,567 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 17:02:33,853 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 17:02:33,854 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 17:02:33,854 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 17:02:33,858 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 17:02:33,883 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 17:02:33,884 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 17:02:33,884 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 17:02:33,884 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 17:02:33,930 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 17:02:33,930 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 17:02:33,930 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 17:02:33,931 | INFO | retraining.src.train | Starting model training.
+2026-07-14 17:02:34,631 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 17:02:34,631 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 17:02:34,655 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 17:02:34,656 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 17:02:48,204 | INFO | retraining.src.registry | Production model found (version=9).
+2026-07-14 17:02:48,204 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5551
+2026-07-14 17:02:48,204 | INFO | retraining.src.registry | Registering candidate model.
+2026-07-14 17:02:52,931 | INFO | retraining.src.registry | Candidate promoted to Production (version=2).
+2026-07-14 17:02:52,931 | INFO | __main__ | Candidate promoted to Production (Version 2).
+2026-07-14 17:02:53,095 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 17:02:54,180 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 17:02:54,180 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 17:14:48,848 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 17:14:48,849 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 17:14:56,064 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 17:14:56,064 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 17:14:56,065 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 17:14:56,068 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 17:14:56,094 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 17:14:56,095 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 17:14:56,096 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 17:14:56,096 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 17:14:56,140 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 17:14:56,141 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 17:14:56,141 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 17:14:56,141 | INFO | retraining.src.train | Starting model training.
+2026-07-14 17:14:56,866 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 17:14:56,867 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 17:14:56,891 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 17:14:56,891 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 17:15:10,741 | INFO | retraining.src.registry | Production model found (version=2).
+2026-07-14 17:15:10,741 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5726
+2026-07-14 17:15:10,741 | INFO | __main__ | Candidate was not promoted.
+2026-07-14 17:15:10,925 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 17:15:12,077 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 17:15:12,077 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 17:32:09,408 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 17:32:09,408 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 17:32:16,626 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 17:32:16,626 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 17:32:16,626 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 17:32:16,633 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 17:32:16,670 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 17:32:16,672 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 17:32:16,672 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 17:32:16,672 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 17:32:16,722 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 17:32:16,723 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 17:32:16,723 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 17:32:16,723 | INFO | retraining.src.train | Starting model training.
+2026-07-14 17:32:17,368 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 17:32:17,368 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 17:32:17,394 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 17:32:17,394 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 17:32:30,883 | INFO | retraining.src.registry | No production model found.
+2026-07-14 17:32:30,883 | INFO | retraining.src.registry | No production model exists. Candidate will be promoted.
+2026-07-14 17:32:30,883 | INFO | retraining.src.registry | Registering candidate model.
+2026-07-14 17:32:36,416 | INFO | retraining.src.registry | Candidate promoted to Production (version=4).
+2026-07-14 17:32:36,416 | INFO | __main__ | Candidate promoted to Production (Version 4).
+2026-07-14 17:32:36,587 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 17:32:37,663 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 17:32:37,663 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 17:33:27,667 | INFO | __main__ | Starting retraining pipeline.
+2026-07-14 17:33:27,668 | INFO | retraining.src.data_loader | Loading retraining dataset from BigQuery.
+2026-07-14 17:33:32,565 | INFO | retraining.src.data_loader | Loaded 7043 rows.
+2026-07-14 17:33:32,565 | INFO | retraining.src.data_loader | Columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'Churn', 'model_version', 'TotalCharges']
+2026-07-14 17:33:32,565 | INFO | retraining.src.preprocessing | Starting preprocessing pipeline.
+2026-07-14 17:33:32,569 | INFO | retraining.src.preprocessing | Dataset shape after cleaning: (7043, 20)
+2026-07-14 17:33:32,594 | INFO | retraining.src.preprocessing | Training samples: 5634 | Testing samples: 1409
+2026-07-14 17:33:32,595 | INFO | retraining.src.preprocessing | Numerical Features: 4
+2026-07-14 17:33:32,595 | INFO | retraining.src.preprocessing | Categorical Features: 11
+2026-07-14 17:33:32,595 | INFO | retraining.src.preprocessing | Fitting preprocessing pipeline.
+2026-07-14 17:33:32,636 | INFO | retraining.src.preprocessing | Processed training shape: (5634, 37)
+2026-07-14 17:33:32,636 | INFO | retraining.src.preprocessing | Processed testing shape: (1409, 37)
+2026-07-14 17:33:32,636 | INFO | retraining.src.preprocessing | Preprocessing completed successfully.
+2026-07-14 17:33:32,636 | INFO | retraining.src.train | Starting model training.
+2026-07-14 17:33:33,276 | INFO | retraining.src.train | Model training completed successfully.
+2026-07-14 17:33:33,277 | INFO | retraining.src.evaluate | Evaluating candidate model.
+2026-07-14 17:33:33,304 | INFO | retraining.src.evaluate | Evaluation completed.
+2026-07-14 17:33:33,304 | INFO | retraining.src.evaluate | Metrics: {'accuracy': 0.7835344215755855, 'precision': 0.6029850746268657, 'recall': 0.5401069518716578, 'f1_score': 0.5698166431593794}
+2026-07-14 17:33:46,692 | INFO | retraining.src.registry | Production model found (version=4).
+2026-07-14 17:33:46,693 | INFO | retraining.src.registry | Candidate F1: 0.5698 | Production F1: 0.5698
+2026-07-14 17:33:46,693 | INFO | __main__ | Candidate was not promoted.
+2026-07-14 17:33:46,868 | INFO | retraining.storage.bigquery | Saving retraining history to BigQuery.
+2026-07-14 17:33:48,029 | INFO | retraining.storage.bigquery | Retraining history saved successfully.
+2026-07-14 17:33:48,029 | INFO | __main__ | Retraining pipeline completed successfully.
+2026-07-14 17:45:36,524 | INFO | monitoring.storage.retraining_history | Fetching latest successful retraining timestamp.
+2026-07-14 17:45:41,425 | INFO | monitoring.storage.retraining_history | Last retraining timestamp: 2026-07-14 21:34:51.213360+00:00
+2026-07-14 17:45:41,425 | INFO | monitoring.storage.retraining_history | Hours since last retraining: 0.18
+2026-07-14 17:45:41,425 | INFO | monitoring.storage.retraining_history | Cooldown not satisfied.
+2026-07-14 17:52:48,744 | INFO | __main__ | Starting drift detection.
+2026-07-14 17:52:48,744 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 17:52:48,745 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 17:52:54,541 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 17:52:54,541 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 17:52:59,180 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 17:52:59,180 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 17:52:59,180 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 17:52:59,184 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 17:52:59,184 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 17:52:59,184 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 17:53:00,069 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 17:53:00,069 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 17:53:00,797 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 17:53:00,798 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 17:53:00,798 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 17:53:07,106 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 17:53:07,107 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 17:53:11,299 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 17:53:11,299 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 185, in detect_drift
+    result = report.as_dict()
+             ^^^^^^^^^^^^^^
+AttributeError: 'Snapshot' object has no attribute 'as_dict'. Did you mean: 'load_dict'?
+2026-07-14 17:57:23,494 | INFO | __main__ | Starting drift detection.
+2026-07-14 17:57:23,494 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 17:57:23,494 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 17:57:28,711 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 17:57:28,712 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 17:57:35,444 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 17:57:35,444 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 17:57:35,444 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 17:57:35,446 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 17:57:35,447 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 17:57:35,447 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 17:57:36,253 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 17:57:36,253 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 17:57:36,321 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 17:57:36,322 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 17:57:36,322 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 17:57:41,731 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 17:57:41,732 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 17:57:45,864 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 17:57:45,864 | INFO | __main__ | No dataset drift detected.
+2026-07-14 17:57:45,864 | INFO | __main__ | Drift detection completed successfully.
+2026-07-14 17:59:09,721 | INFO | __main__ | Starting drift detection.
+2026-07-14 17:59:09,721 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 17:59:09,722 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 17:59:14,799 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 17:59:14,800 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 17:59:19,548 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 17:59:19,548 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 17:59:19,548 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 17:59:19,551 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 17:59:19,551 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 17:59:19,551 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 17:59:20,337 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 17:59:20,338 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 17:59:20,403 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 17:59:20,404 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 17:59:20,405 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 17:59:26,254 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 17:59:26,254 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 17:59:30,315 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 17:59:30,315 | INFO | __main__ | No dataset drift detected.
+2026-07-14 17:59:30,316 | INFO | __main__ | Drift detection completed successfully.
+2026-07-14 18:00:09,008 | INFO | __main__ | Starting drift detection.
+2026-07-14 18:00:09,009 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 18:00:09,009 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 18:00:16,215 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 18:00:16,215 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 18:00:22,871 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 18:00:22,872 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 18:00:22,872 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 18:00:22,874 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 18:00:22,874 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 18:00:22,875 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 18:00:23,778 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 18:00:23,779 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 18:00:23,894 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 18:00:23,902 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 18:00:23,906 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 18:00:29,958 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 18:00:29,958 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 18:00:34,459 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 18:00:34,460 | INFO | __main__ | Dataset drift detected.
+2026-07-14 18:00:34,460 | INFO | monitoring.storage.retraining_history | Fetching latest successful retraining timestamp.
+2026-07-14 18:00:38,985 | INFO | monitoring.storage.retraining_history | Last retraining timestamp: 2026-07-14 21:34:51.213360+00:00
+2026-07-14 18:00:38,985 | INFO | monitoring.storage.retraining_history | Hours since last retraining: 0.43
+2026-07-14 18:00:38,985 | INFO | monitoring.storage.retraining_history | Cooldown not satisfied.
+2026-07-14 18:00:38,985 | INFO | __main__ | Skipping retraining because cooldown is active.
+2026-07-14 18:00:38,986 | INFO | __main__ | Drift detection completed successfully.
+2026-07-14 18:02:13,400 | INFO | __main__ | Starting drift detection.
+2026-07-14 18:02:13,400 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 18:02:13,401 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 18:02:20,474 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 18:02:20,475 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 18:02:25,316 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 18:02:25,316 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 18:02:25,316 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 18:02:25,319 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 18:02:25,319 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 18:02:25,319 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 18:02:26,154 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 18:02:26,154 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 18:02:26,220 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 18:02:26,221 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 18:02:26,221 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 18:02:31,948 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 18:02:31,948 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 18:02:36,126 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 18:02:36,126 | INFO | __main__ | Dataset drift detected.
+2026-07-14 18:02:36,126 | INFO | monitoring.storage.retraining_history | Fetching latest successful retraining timestamp.
+2026-07-14 18:02:38,329 | INFO | monitoring.storage.retraining_history | Last retraining timestamp: 2026-07-14 21:34:51.213360+00:00
+2026-07-14 18:02:38,330 | INFO | monitoring.storage.retraining_history | Hours since last retraining: 0.46
+2026-07-14 18:02:38,330 | INFO | monitoring.storage.retraining_history | Cooldown not satisfied.
+2026-07-14 18:02:38,330 | INFO | __main__ | Skipping retraining because cooldown is active.
+2026-07-14 18:02:38,330 | INFO | monitoring.trigger.cloud_run | Triggering retraining Cloud Run Job.
+2026-07-14 18:02:39,051 | ERROR | __main__ | Drift detection failed.
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 55, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_interceptor.py", line 276, in __call__
+    response, ignored_call = self._with_call(
+                             ~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_interceptor.py", line 331, in _with_call
+    return call.result(), call
+           ~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_channel.py", line 438, in result
+    raise self
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_interceptor.py", line 314, in continuation
+    response, call = self._thunk(new_method).with_call(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<4 lines>...
+        compression=new_compression,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_channel.py", line 1173, in with_call
+    return _end_unary_response_blocking(state, call, True, None)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\grpc\_channel.py", line 990, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.NOT_FOUND
+	details = "Resource 'retraining-job' of kind 'JOB' in region 'asia-south1' in project 'women-safety-by-pioneers' does not exist."
+	debug_error_string = "NOT_FOUND:Resource 'retraining-job' of kind 'JOB' in region 'asia-south1' in project 'women-safety-by-pioneers' does not exist."
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\drift.py", line 206, in detect_drift
+    trigger_retraining_job()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\monitoring\trigger\cloud_run.py", line 28, in trigger_retraining_job
+    operation = client.run_job(
+        name=job_name,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\cloud\run_v2\services\jobs\client.py", line 1657, in run_job
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 128, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\Tejas\Desktop\PYTHON_CODES\mlops-p2\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 57, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.NotFound: 404 Resource 'retraining-job' of kind 'JOB' in region 'asia-south1' in project 'women-safety-by-pioneers' does not exist.
+2026-07-14 18:12:35,794 | INFO | __main__ | Starting drift detection.
+2026-07-14 18:12:35,794 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 18:12:35,794 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 18:12:41,074 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 18:12:41,075 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 18:12:47,103 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 18:12:47,103 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 18:12:47,103 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 18:12:47,106 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 18:12:47,106 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 18:12:47,106 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 18:12:47,925 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 18:12:47,925 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 18:12:48,010 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 18:12:48,011 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 18:12:48,011 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 18:12:53,290 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 18:12:53,290 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 18:12:57,401 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 18:12:57,401 | INFO | __main__ | Dataset drift detected.
+2026-07-14 18:12:57,402 | INFO | monitoring.storage.retraining_history | Fetching latest successful retraining timestamp.
+2026-07-14 18:13:00,183 | INFO | monitoring.storage.retraining_history | Last retraining timestamp: 2026-07-14 22:11:17.473787+00:00
+2026-07-14 18:13:00,183 | INFO | monitoring.storage.retraining_history | Hours since last retraining: 0.03
+2026-07-14 18:13:00,183 | INFO | monitoring.storage.retraining_history | Cooldown not satisfied.
+2026-07-14 18:13:00,184 | INFO | __main__ | Skipping retraining because cooldown is active.
+2026-07-14 18:13:00,184 | INFO | monitoring.trigger.cloud_run | Triggering retraining Cloud Run Job.
+2026-07-14 18:13:01,174 | INFO | monitoring.trigger.cloud_run | Retraining job started: projects/women-safety-by-pioneers/locations/asia-south1/operations/9364c603-174b-49c6-8ab0-3fa04418680d
+2026-07-14 18:13:01,175 | INFO | __main__ | Drift detection completed successfully.
+2026-07-14 18:14:13,796 | INFO | __main__ | Starting drift detection.
+2026-07-14 18:14:13,796 | INFO | __main__ | Loading reference and production datasets from BigQuery.
+2026-07-14 18:14:13,797 | INFO | monitoring.storage.bigquery | Fetching reference dataset from BigQuery.
+2026-07-14 18:14:20,227 | INFO | monitoring.storage.bigquery | Fetched 7043 reference records from BigQuery.
+2026-07-14 18:14:20,227 | INFO | monitoring.storage.bigquery | Fetching production predictions from BigQuery.
+2026-07-14 18:14:25,123 | INFO | monitoring.storage.bigquery | Fetched 101 prediction records from BigQuery.
+2026-07-14 18:14:25,123 | INFO | __main__ | Loaded 7043 reference records and 101 production records.
+2026-07-14 18:14:25,123 | INFO | __main__ | Preparing datasets for drift detection.
+2026-07-14 18:14:25,126 | INFO | __main__ | Prepared datasets with 19 features.
+2026-07-14 18:14:25,126 | INFO | __main__ | Reference Shape: (7043, 19), Production Shape: (101, 19)
+2026-07-14 18:14:25,126 | INFO | __main__ | Running Evidently data drift analysis.
+2026-07-14 18:14:25,924 | INFO | __main__ | Data drift analysis completed.
+2026-07-14 18:14:25,924 | INFO | __main__ | Saving HTML report to monitoring/reports/drift_report.html
+2026-07-14 18:14:25,991 | INFO | __main__ | Saving JSON summary to monitoring/reports/drift_result.json
+2026-07-14 18:14:25,992 | INFO | __main__ | Drift Summary -> Dataset Drift: True, Drifted Columns: 11, Share: 0.85
+2026-07-14 18:14:25,992 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_report.html to GCS.
+2026-07-14 18:14:31,907 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_report.html.
+2026-07-14 18:14:31,908 | INFO | monitoring.storage.gcs | Uploading monitoring/reports/drift_result.json to GCS.
+2026-07-14 18:14:35,820 | INFO | monitoring.storage.gcs | Successfully uploaded reports/v1/2026/07/14/drift_result.json.
+2026-07-14 18:14:35,821 | INFO | __main__ | Dataset drift detected.
+2026-07-14 18:14:35,821 | INFO | monitoring.storage.retraining_history | Fetching latest successful retraining timestamp.
+2026-07-14 18:14:38,489 | INFO | monitoring.storage.retraining_history | Last retraining timestamp: 2026-07-14 22:13:32.288964+00:00
+2026-07-14 18:14:38,489 | INFO | monitoring.storage.retraining_history | Hours since last retraining: 0.02
+2026-07-14 18:14:38,489 | INFO | monitoring.storage.retraining_history | Cooldown not satisfied.
+2026-07-14 18:14:38,489 | INFO | __main__ | Skipping retraining because cooldown is active.
+2026-07-14 18:14:38,489 | INFO | __main__ | Drift detection completed successfully.

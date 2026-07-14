@@ -7,6 +7,22 @@ logger = get_logger(__name__)
 
 client = MlflowClient()
 
+#
+import mlflow
+from mlflow import MlflowClient
+
+from logger import get_logger
+
+from config.config import (
+    MLFLOW_TRACKING_URI,
+)
+
+logger = get_logger(__name__)
+
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+
+client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
+
 
 def get_production_metrics(model_name: str):
     """
@@ -18,7 +34,7 @@ def get_production_metrics(model_name: str):
     try:
         model = client.get_model_version_by_alias(
             name=model_name,
-            alias="Production",
+            alias="production",
         )
 
         run = client.get_run(
@@ -85,7 +101,7 @@ def register_candidate(
 
     client.set_registered_model_alias(
         name=model_name,
-        alias="Production",
+        alias="production",
         version=registered_model.version,
     )
 

@@ -8,6 +8,7 @@ from config.config import (
     BQ_DATASET_ID,
     BQ_REFERENCE_TABLE_ID,
     BQ_PREDICTION_TABLE_ID,
+    BQ_RETRAINING_HISTORY_TABLE,
 )
 from logger import get_logger
 
@@ -33,6 +34,13 @@ def get_reference_table_id() -> str:
     Returns the fully qualified BigQuery table ID.
     """
     return f"{BQ_PROJECT_ID}.{BQ_DATASET_ID}.{BQ_REFERENCE_TABLE_ID}"
+
+
+def get_history_table_id() -> str:
+    """
+    Returns the fully qualified BigQuery table ID.
+    """
+    return f"{BQ_PROJECT_ID}.{BQ_DATASET_ID}.{BQ_RETRAINING_HISTORY_TABLE}"
 
 
 def insert_prediction(

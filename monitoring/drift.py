@@ -18,7 +18,17 @@ from monitoring.storage.gcs import (
     upload_report,
 )
 
+from monitoring.storage.retraining_history import (
+    can_trigger_retraining,
+)
+
+from monitoring.trigger.cloud_run import (
+    trigger_retraining_job,
+)
+
 logger = get_logger(__name__)
+
+is_drifted = None
 
 
 def load_data():
@@ -97,6 +107,7 @@ def save_html_report(report):
     report.save_html(DRIFT_REPORT_PATH)
 
 def _extract_drift_summary(result: dict) -> dict:
+    global is_drifted
     metrics = result.get("metrics", [])
 
     # --- Dataset-level drift (metrics[0]) ---
@@ -105,7 +116,7 @@ def _extract_drift_summary(result: dict) -> dict:
     share = drift_entry["value"]["share"]
 
     drift_share_threshold = drift_entry["config"].get("drift_share", 0.5)
-    dataset_drift = bool(share > drift_share_threshold)  # ✅ explicit cast
+    dataset_drift = is_drifted = bool(share > drift_share_threshold)  # ✅ explicit cast
 
     # --- Per-column drift scores (metrics[1..N]) ---
     column_drifts = {}
@@ -173,6 +184,30 @@ def detect_drift():
 
         upload_report(DRIFT_REPORT_PATH)
         upload_json(DRIFT_RESULT_PATH)
+
+        print("__________________ IS DRIFTED : ",is_drifted)
+
+        if is_drifted != None and is_drifted :
+
+            logger.info(
+                "Dataset drift detected."
+            )
+
+            if can_trigger_retraining():
+
+                trigger_retraining_job()
+
+            else:
+
+                logger.info(
+                    "Skipping retraining because cooldown is active."
+                )
+
+        else:
+
+            logger.info(
+                "No dataset drift detected."
+            )
 
         logger.info("Drift detection completed successfully.")
 
